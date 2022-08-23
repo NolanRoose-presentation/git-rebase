@@ -7,6 +7,8 @@
 
 Collaborer simplement avec git, avec un minimum d'effort.
 
+--
+
 ### Sommaire
 
 1. C'est quoi git ?
@@ -21,15 +23,17 @@ Collaborer simplement avec git, avec un minimum d'effort.
 
 ---
 
-### C'est quoi git ?
-
-Pour les ancêtres dans la sale, git c'est SVN mais en mieux.
-C'est un système de contrôle de version, le plus utilisé à ce jours, open source et développé à l'orginie par Linus Torvalds.
-Il permet de versionner son code ou autres, mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
+# C'est quoi git ?
 
 --
 
-# Intéret ?
-- Rédaction de présentation très rapide
-- Historique des modifications
-- Fork pour réutiliser / faire une nouvelle version de présentationd
+Pour les ancêtres dans la sale, git c'est SVN mais en mieux.  
+C'est un système de contrôle de version, le plus utilisé à ce jours,  
+open source et développé à l'origine par [Linus Torvalds](https://fr.wikipedia.org/wiki/Linus_Torvalds).  
+Il permet de versionner son code ou autres,  
+mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
+
+--
+
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
