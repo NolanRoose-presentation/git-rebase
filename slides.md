@@ -243,7 +243,7 @@ Localisez votre ``` .gitconfig ``` dans votre dossier personnel, et collez-y ce 
     upstream = cyan
 ```
 
--- 
+--
 
 - Quelques alias utiles
 
