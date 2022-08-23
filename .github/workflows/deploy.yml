@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_TITLE: ${{ github.repository }}
   USERNAME: ${{ github.actor }}
-  PASSWORD: ${{ secrets.DOCKER_IMAGE_TOKEN }}
+  PASSWORD: ${{ secrets.DOCKER_CONATAINER_REGISTRY_TOKEN }}
 
 jobs:
   build_and_deploy:
@@ -16,7 +16,7 @@ jobs:
       image: ghcr.io/nolanroose-presentation/reveal-template:master
       credentials:
           username: ${{ env.USERNAME }}
-          password: ${{ env.  PASSWORD }}
+          password: ${{ env.PASSWORD }}
     permissions:
       contents: read
       packages: write
