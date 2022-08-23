@@ -4,13 +4,13 @@
 --
 
 ## C'est quoi le besoin ?
-  
+
 Collaborer simplement avec git, avec un minimum d'effort.
 
 --
 
 ### Sommaire
-  
+
 1. C'est quoi git ?
 2. C'est quoi un rebase ? Et pourquoi c'est mieux ?
 3. Configurer git
@@ -23,7 +23,7 @@ Collaborer simplement avec git, avec un minimum d'effort.
 ---
 
 # 1. C'est quoi git ?
-  
+
 ![Git gif](https://media.giphy.com/media/kH6CqYiquZawmU1HI6/giphy.gif)
 
 --
@@ -37,13 +37,13 @@ mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
 ---
 
 # 2. C'est quoi un rebase ? Et pourquoi c'est mieux ?
-  
+
 ![Alt Text](https://media.giphy.com/media/zQOmyYc8TXzSBfrTFb/giphy.gif)
 
 --
 
 ## Tout d'abord, c'est quoi le merge ?
-  
+
 Merge est un processus de fusion de deux branches.  
 Tout comme le rebase, mais avec un traitement différent :
 - Créer un commit de merge
@@ -75,7 +75,7 @@ Seulement si vous êtes à jours avec la branche de destination.
 --
 
 Exemple de merge :
-  
+
 ```
 git checkout master
 git pull
@@ -96,7 +96,7 @@ Mais seulement dans un seul sens, de la branche feature vers la develop.
 --
 
 ## C'est quoi un rebase ?
-  
+
 Le rebase est comme je l'ai déjà dit, un processus de fusion de deux branches.  
 Mais en moins violent :  
 - Mise en tampon des modifications de la branche de destination
@@ -132,7 +132,7 @@ git push -f
 --
 
 ## Les conflits
-  
+
 Avec le merge la question ne se pose pas, la branche source écrase tout ce quelle peut.  
 Pour le reste, vous devez tout résoudre en même temps.  
   
@@ -145,7 +145,7 @@ Au risque de multiplier les conflits.
 --
 
 Pour chaque commit en conflit, il faut résoudre le conflit, et ensuite appliquer les modifications.
-  
+
 ```
 git add .
 git rebase --continue
@@ -156,7 +156,7 @@ git rebase --continue
 ## En cas de problème lors d'un rebase  
   
 # Arrêtez tout ! Et recommencez !
-  
+
 ```
 git rebase --abort
 ```
@@ -164,14 +164,14 @@ git rebase --abort
 --
 
 ### Qui suit réellement ?  
-  
+
 Avez-vous remarqué une différence dans les examples de merge/rebase ?  
 Si oui laquel ?
 
 --
 
 ## Git pull / git pull --rebase
-  
+
 - ``` git pull ``` => fait un merge  
 - ``` git pull --rebase ``` => fait un rebase
 
@@ -182,14 +182,14 @@ Si oui laquel ?
 --
 
 ## Attention les rebases réécrivent l'arbre !
-  
+
 C'est pourquoi il faut les manipuler avec précaution.  
 Car un ``` git push -f ``` est irréversible.
 
 --
 
 ## Squash ses commits pour n'avoir qu'une étape de rebase
-  
+
 Cela évite de passer trop de temps sur le rebase mais n'est pas toujours judicieux.  
 
 Pour un ajout de feature cela à du sens, car toutes les modifications  
@@ -208,7 +208,7 @@ Pour un refacto ou une correction, cela à moins de sens de sens.
 --
 
 ## Conclusion
-  
+
 - Récupérer les modifications de la branche source => rebase
 - Fusionner les modifications de la branche feature dans la branche principale => merge
 - Squash quand ça à du sens
@@ -368,3 +368,9 @@ c.f 5. Faire un commit
 
 - [Git extras](https://github.com/tj/git-extras), plein de commandes utiles
 - [Ungit](https://www.npmjs.com/package/ungit), un joli arbre
+
+---
+
+# Des questions ? 
+
+![yoda](https://media.giphy.com/media/8hMD9YakVza3452SpN/giphy.gif)
