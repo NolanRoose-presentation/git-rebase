@@ -68,12 +68,31 @@ Mais pour introduire des modifications dans la branche principale oui.
 
 --
 
+Exemple de merge :
+
+```
+git checkout master
+git pull
+git checkout feature
+git merge master
+git push
+```
+
+--
+
 ![mergegif](https://media.giphy.com/media/cFkiFMDg3iFoI/giphy.gif)
 
 -- 
 
 ## C'est quoi un rebase ?
 
+Le rebase est comme je l'ai déjà dit, un processus de fusion de deux branches.
+Mais en moins violent :
+- Mise en tampon des modifications de la branche de destination
+- Application des modifications la branche de source
+- Application des modifications de la branche de destination commit par commit
+- Meilleures gestions des conflits
+- Pas de commit de merge superflus
 
 
 
