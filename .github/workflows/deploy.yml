@@ -1,0 +1,39 @@
+name: DEPLOY
+
+on:
+  push:
+    branches: [ "master" ]
+    
+env:
+  PROJECT_TITLE: ${{ github.repository }}
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    container: ghcr.io/nolanroose-presentation/reveal-template:master
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Prepare site
+        run: |
+          mv /public public
+          mv slides.md public/slides.md
+          echo $CI_PROJECT_TITLE
+          sed -i "s/\[TITLE\]/${{ env.PROJECT_TITLE }}/g" public/index.html
+          
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
+    
