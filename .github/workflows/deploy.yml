@@ -3,18 +3,20 @@ name: DEPLOY
 on:
   push:
     branches: [ "master" ]
-    
+
 env:
   PROJECT_TITLE: ${{ github.repository }}
+  USERNAME: ${{ github.actor }}
+  PASSWORD: ${{ secrets.DOCKER_IMAGE_TOKEN }}
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: ghcr.io/nolanroose-presentation/reveal-template:master
       credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_IMAGE_TOKEN }}
+          username: ${{ env.USERNAME }}
+          password: ${{ env.  PASSWORD }}
     permissions:
       contents: read
       packages: write
@@ -22,14 +24,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Prepare site
         run: |
           mv /public public
           mv slides.md public/slides.md
           echo $CI_PROJECT_TITLE
           sed -i "s/\[TITLE\]/${{ env.PROJECT_TITLE }}/g" public/index.html
-          
+
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v3
@@ -39,5 +41,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        
-    
+
+
