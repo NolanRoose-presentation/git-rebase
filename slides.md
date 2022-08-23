@@ -42,6 +42,7 @@ mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
 ![Alt Text](https://media.giphy.com/media/zQOmyYc8TXzSBfrTFb/giphy.gif)
 
 --
+
 ## Tout d'abord, c'est quoi le merge ?
 
 Merge est un processus de fusion de deux branches.  
@@ -68,5 +69,11 @@ Mais pour introduire des modifications dans la branche principale oui.
 --
 
 ![mergegif](https://media.giphy.com/media/cFkiFMDg3iFoI/giphy.gif)
+
+-- 
+
+## C'est quoi un rebase ?
+
+
 
 
