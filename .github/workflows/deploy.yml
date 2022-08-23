@@ -13,8 +13,8 @@ jobs:
     container: 
       image: ghcr.io/nolanroose-presentation/reveal-template:master
       credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.github_token }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: read
       packages: write
