@@ -1,16 +1,16 @@
 # Collaborer avec git
 ### Vive les rebase !
-
+  
 --
 
 ### C'est quoi le besoin ?
-
+  
 Collaborer simplement avec git, avec un minimum d'effort.
 
 --
 
 ### Sommaire
-
+  
 1. C'est quoi git ?
 2. C'est quoi un rebase ? Et pourquoi c'est mieux ?
 3. Configurer git
@@ -23,8 +23,8 @@ Collaborer simplement avec git, avec un minimum d'effort.
 
 ---
 
-# C'est quoi git ?
-
+# 1. C'est quoi git ?
+  
 ![Git gif](https://media.giphy.com/media/kH6CqYiquZawmU1HI6/giphy.gif)
 
 --
@@ -37,14 +37,14 @@ mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
 
 ---
 
-# C'est quoi un rebase ? Et pourquoi c'est mieux ?
-
+# 2. C'est quoi un rebase ? Et pourquoi c'est mieux ?
+  
 ![Alt Text](https://media.giphy.com/media/zQOmyYc8TXzSBfrTFb/giphy.gif)
 
 --
 
 ## Tout d'abord, c'est quoi le merge ?
-
+  
 Merge est un processus de fusion de deux branches.  
 Tout comme le rebase, mais avec un traitement différent :
 - Créer un commit de merge
@@ -76,7 +76,7 @@ Seulement si vous êtes à jours avec la branche de destination.
 --
 
 Exemple de merge :
-
+  
 ```
 git checkout master
 git pull
@@ -97,7 +97,7 @@ Mais seulement dans un seul sens, de la branche feature vers la develop.
 --
 
 ## C'est quoi un rebase ?
-
+  
 Le rebase est comme je l'ai déjà dit, un processus de fusion de deux branches.  
 Mais en moins violent :  
 - Mise en tampon des modifications de la branche de destination
@@ -132,8 +132,8 @@ git push -f
 
 --
 
-### Les conflits
-
+## Les conflits
+  
 Avec le merge la question ne se pose pas, la branche source écrase tout ce quelle peut.  
 Pour le reste, vous devez tout résoudre en même temps.  
   
@@ -146,7 +146,7 @@ Au risque de multiplier les conflits.
 --
 
 Pour chaque commit en conflit, il faut résoudre le conflit, et ensuite appliquer les modifications.
-
+  
 ```
 git add .
 git rebase --continue
@@ -155,8 +155,9 @@ git rebase --continue
 --
 
 ## En cas de problème lors d'un rebase  
+  
 # Arrêtez tout ! Et recommencez !
-
+  
 ```
 git rebase --abort
 ```
@@ -164,17 +165,140 @@ git rebase --abort
 --
 
 ### Qui suit réellement ?  
-
+  
 Avez-vous remarqué une différence dans les examples de merge/rebase ?  
 Si oui laquel ?
 
 --
 
 ## Git pull / git pull --rebase
-
-- `git pull` => fait un merge  
-- `git pull --rebase` => fait un rebase
+  
+- ```git pull``` => fait un merge  
+- ```git pull --rebase``` => fait un rebase
 
 --
 
 ![pull](img/pull.png)
+
+--
+
+## Attention les rebases réécrivent l'arbre !
+  
+C'est pourquoi il faut les manipuler avec précaution.  
+Car un ```git push -f``` est irréversible.
+
+--
+
+## Squash c'est commit pour n'avoir qu'une étape de rebase
+  
+Cela évite de passer trop de temps sur le rebase mais n'est pas toujours judicieux.  
+
+Pour un ajout de feature cela à du sens, car toutes les modifications  
+sont normalement nouvelles.  
+  
+Pour un refacto ou une correction, cela à moins de sens de sens.
+
+--
+
+- ```git rebase -i <commit_sha>```
+  le commit_sha est celui à partir du quel vous avez démarré votre branche
+- Une page d'éditeur s'ouvre, remplacer les ```pick``` par la valeur que vous souhaitez
+- Sauvegarder et fermer l'éditeur
+- `git push -f` 
+
+--
+
+## Conclusion
+  
+- Récupérer les modifications de la branche source => rebase
+- Fusionner les modifications de la branche feature dans la branche principale => merge
+- Squash quand ça à du sens
+- En cas de problème, arrêter le rebase et recommencer
+
+---
+
+# 3. Configurer Git
+
+Depuis plusieurs années, j'utilise là même configuration pour Git.  
+Qui fonctionne bien avec les rebases et les merges.  
+Localisez votre ```.gitconfig``` dans votre dossier personnel, et collez-y ce que suit.
+
+--
+
+- Configuration du user
+
+```
+[user]
+	name = Nolan Roose
+	email = roose.nolan@gmail.com
+```
+
+--
+
+- Configuration d'affichage
+
+```
+[color]
+    ui = auto
+[color "branch"]
+    upstream = cyan
+```
+
+-- 
+
+- Quelques alias utiles
+
+```
+[alias]
+    poule = pull --rebase
+    co = checkout
+    ci = commit
+    br = branch
+    today = log --since=midnight --author='David Leuliette' --oneline
+    lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+    oops = commit --amend --no-edit
+```
+
+--
+
+- Configuration du push
+
+```
+[push]
+    # Default push should only push the current branch to its push target, regardless of its remote name
+    default = current
+    # When pushing, also push tags whose commit-ishs are now reachable upstream
+    followTags = true
+```
+
+--
+
+- Configuration du diff
+
+```
+[diff]
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+    mnemonicPrefix = true
+    # Show renames/moves as such
+    renames = true
+    # When using --word-diff, assume --word-diff-regex=.
+    wordRegex = .
+    # Display submodule-related information (commit listings)
+    submodule = log
+```
+
+--
+
+- Configuration des logs
+
+```
+[log]
+    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+    abbrevCommit = true
+    # Automatically --follow when given a single path
+    follow = true
+```
+
+---
+
+# 4. Créer un repo et le cloner
