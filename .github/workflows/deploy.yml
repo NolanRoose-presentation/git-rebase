@@ -10,7 +10,11 @@ env:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    container: ghcr.io/nolanroose-presentation/reveal-template:master
+    container: 
+      image: ghcr.io/nolanroose-presentation/reveal-template:master
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     permissions:
       contents: read
       packages: write
