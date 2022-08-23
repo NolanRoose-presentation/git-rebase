@@ -19,4 +19,4 @@ Juste par exemple
 # Intéret ?
 - Rédaction de présentation très rapide
 - Historique des modifications
-- Fork pour réutiliser / faire une nouvelle version de présentation
+- Fork pour réutiliser / faire une nouvelle version de présentationd
