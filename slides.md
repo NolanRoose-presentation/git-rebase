@@ -53,18 +53,18 @@ Tout comme le rebase, mais avec un traitement différent :
 - Pas de gestion de conflit étape par étape
 - ...
 
--- 
+--
 
 Les merges ne devraient jamais être utilisés pour récupérer  
 des modifications dans une branche de feature.
 
-![merge](/public/img/merge-2.png)
+![merge](img/merge-2.png)
 
 --
 
 Mais pour introduire des modifications dans la branche principale oui.
 
-![merge](/public/img/merge.png)
+![merge](img/merge.png)
 
 --
 
@@ -82,7 +82,7 @@ git push
 
 ![mergegif](https://media.giphy.com/media/cFkiFMDg3iFoI/giphy.gif)
 
--- 
+--
 
 ## C'est quoi un rebase ?
 
@@ -93,6 +93,3 @@ Mais en moins violent :
 - Application des modifications de la branche de destination commit par commit
 - Meilleures gestions des conflits
 - Pas de commit de merge superflus
-
-
-
