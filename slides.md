@@ -1,9 +1,9 @@
 # Collaborer avec git
 ### Vive les rebase !
-  
+
 --
 
-### C'est quoi le besoin ?
+## C'est quoi le besoin ?
   
 Collaborer simplement avec git, avec un minimum d'effort.
 
@@ -14,12 +14,11 @@ Collaborer simplement avec git, avec un minimum d'effort.
 1. C'est quoi git ?
 2. C'est quoi un rebase ? Et pourquoi c'est mieux ?
 3. Configurer git
-4. Créer un repo et le cloner
-5. Faire son premier commit
+4. Créer un repo
+5. Faire un commit
 6. Créer une pull request et merge
-7. Récupérer les modifications depuis une branche
-8. Faire ça à plusieurs mais bien
-9. Quelques outils
+7. Faire ça à plusieurs mais bien
+8. Quelques outils
 
 ---
 
@@ -173,8 +172,8 @@ Si oui laquel ?
 
 ## Git pull / git pull --rebase
   
-- ```git pull``` => fait un merge  
-- ```git pull --rebase``` => fait un rebase
+- ``` git pull ``` => fait un merge  
+- ``` git pull --rebase ``` => fait un rebase
 
 --
 
@@ -185,11 +184,11 @@ Si oui laquel ?
 ## Attention les rebases réécrivent l'arbre !
   
 C'est pourquoi il faut les manipuler avec précaution.  
-Car un ```git push -f``` est irréversible.
+Car un ``` git push -f ``` est irréversible.
 
 --
 
-## Squash c'est commit pour n'avoir qu'une étape de rebase
+## Squash ses commits pour n'avoir qu'une étape de rebase
   
 Cela évite de passer trop de temps sur le rebase mais n'est pas toujours judicieux.  
 
@@ -200,11 +199,11 @@ Pour un refacto ou une correction, cela à moins de sens de sens.
 
 --
 
-- ```git rebase -i <commit_sha>```
+- ``` git rebase -i <commit_sha> ```  
   le commit_sha est celui à partir du quel vous avez démarré votre branche
-- Une page d'éditeur s'ouvre, remplacer les ```pick``` par la valeur que vous souhaitez
+- Une page d'éditeur s'ouvre, remplacer les ``` pick ``` par la valeur que vous souhaitez
 - Sauvegarder et fermer l'éditeur
-- `git push -f` 
+- ``` git push -f ```
 
 --
 
@@ -221,7 +220,7 @@ Pour un refacto ou une correction, cela à moins de sens de sens.
 
 Depuis plusieurs années, j'utilise là même configuration pour Git.  
 Qui fonctionne bien avec les rebases et les merges.  
-Localisez votre ```.gitconfig``` dans votre dossier personnel, et collez-y ce que suit.
+Localisez votre ``` .gitconfig ``` dans votre dossier personnel, et collez-y ce que suit.
 
 --
 
@@ -254,7 +253,7 @@ Localisez votre ```.gitconfig``` dans votre dossier personnel, et collez-y ce qu
     co = checkout
     ci = commit
     br = branch
-    today = log --since=midnight --author='David Leuliette' --oneline
+    today = log --since=midnight --author='Nolan Roose' --oneline
     lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
     oops = commit --amend --no-edit
 ```
@@ -301,4 +300,71 @@ Localisez votre ```.gitconfig``` dans votre dossier personnel, et collez-y ce qu
 
 ---
 
-# 4. Créer un repo et le cloner
+# 4. Créer un repo
+
+- Créer un repo sur Github/Gitlab/Bitbucket ...
+
+```
+git init
+git checkout -b master
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:NolanRoose-presentation/practice.git
+git push -u origin master
+```
+
+---
+
+# 5. Faire un commit
+
+Après avoir créé le repo, et fait ses premières modifications, on peut commit.
+
+```
+git add .
+git commit -m "first commit"
+git push
+```
+
+---
+
+# 6. Créer une pull request et merge
+
+## Créer une branche
+
+``` 
+git checkout -b feature
+git push -u origin feature
+```
+
+--
+
+## Faire vos modifications et commit
+
+c.f 5. Faire un commit
+
+--
+
+## Se mettre à jour avec la branche master
+
+- Squash si necessaire
+- Rebase la branche master
+
+--
+
+## Pull request time
+
+- Review de la pull request
+- Merge de la pull request
+
+---
+
+# 7. Faire ça à plusieurs mais bien
+
+## Il est l'heure de s'amuser un peu ! A vos claviers !
+
+---
+
+# Quelques outils
+
+- [Git extras](https://github.com/tj/git-extras), plein de commandes utiles
+- [Ungit](https://www.npmjs.com/package/ungit), un joli arbre
