@@ -1,5 +1,5 @@
-# Présentation Reveal.js
-## Gitlab-CI + Gitlab Pages
+# Collaborer avec git
+### Vive les rebase !
 
 --
 
