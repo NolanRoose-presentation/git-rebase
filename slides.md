@@ -25,6 +25,8 @@ Collaborer simplement avec git, avec un minimum d'effort.
 
 # C'est quoi git ?
 
+![Git gif](https://media.giphy.com/media/kH6CqYiquZawmU1HI6/giphy.gif)
+
 --
 
 Pour les ancêtres dans la sale, git c'est SVN mais en mieux.  
@@ -33,7 +35,38 @@ open source et développé à l'origine par [Linus Torvalds](https://fr.wikipedi
 Il permet de versionner son code ou autres,  
 mais aussi le partager de façon simple et efficace (quand on sait l'utiliser).
 
+---
+
+# C'est quoi un rebase ? Et pourquoi c'est mieux ?
+
+![Alt Text](https://media.giphy.com/media/zQOmyYc8TXzSBfrTFb/giphy.gif)
+
+--
+## Tout d'abord, c'est quoi le merge ?
+
+Merge est un processus de fusion de deux branches.  
+Tout comme le rebase, mais avec un traitement différent :
+- Créer un commit de merge
+- La branche qu'on merge est prioritaire sur la branche de destination
+- Tout les merges sont gardé dans l'historique
+- Pas de gestion de conflit étape par étape
+- ...
+
+-- 
+
+Les merges ne devraient jamais être utilisés pour récupérer  
+des modifications dans une branche de feature.
+
+![merge](/public/img/merge-2.png)
+
 --
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+Mais pour introduire des modifications dans la branche principale oui.
+
+![merge](/public/img/merge.png)
+
+--
+
+![mergegif](https://media.giphy.com/media/cFkiFMDg3iFoI/giphy.gif)
+
 
