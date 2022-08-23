@@ -29,7 +29,7 @@ jobs:
         run: |
           mv /public public
           mv slides.md public/slides.md
-          echo $CI_PROJECT_TITLE
+          mv img/ public/img/
           sed -i "s/\[TITLE\]/GIT_REBASE/g" public/index.html
 
       - name: Deploy 🚀
