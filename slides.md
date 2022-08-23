@@ -111,3 +111,70 @@ Mais en moins violent :
 Une illustration de ce que fait un rebase
 
 ![rebase](img/rebase.png)
+
+--
+
+Voici comment récupérer correctement les modifications de la branche mère de votre feature.
+
+![rebase](img/rebase-2.png)
+
+--
+
+Exemple de rebase sans conflits :
+
+```
+git checkout master
+git pull --rebase
+git checkout feature
+git rebase master
+git push -f
+```
+
+--
+
+### Les conflits
+
+Avec le merge la question ne se pose pas, la branche source écrase tout ce quelle peut.  
+Pour le reste, vous devez tout résoudre en même temps.  
+  
+Pour le rebase, c'est différent, cela ce fait par N étapes.  
+N étant le nombre de commits de la branche de destination.  
+Ce qui permet d'avoir le control sur les conflits de chaques commits.  
+Cependant, attention vous devez résoudre que les conflits et rien de plus.  
+Au risque de multiplier les conflits.  
+
+--
+
+Pour chaque commit en conflit, il faut résoudre le conflit, et ensuite appliquer les modifications.
+
+```
+git add .
+git rebase --continue
+```
+
+--
+
+## En cas de problème lors d'un rebase  
+# Arrêtez tout ! Et recommencez !
+
+```
+git rebase --abort
+```
+
+--
+
+### Qui suit réellement ?  
+
+Avez-vous remarqué une différence dans les examples de merge/rebase ?  
+Si oui laquel ?
+
+--
+
+## Git pull / git pull --rebase
+
+- `git pull` => fait un merge  
+- `git pull --rebase` => fait un rebase
+
+--
+
+![pull](img/pull.png)
