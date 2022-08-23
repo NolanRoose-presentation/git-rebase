@@ -32,16 +32,13 @@ jobs:
           echo $CI_PROJECT_TITLE
           sed -i "s/\[TITLE\]/GIT_REBASE/g" public/index.html
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy 🚀
         if: success()
-        uses: crazy-max/ghaction-github-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target_branch: gh-pages
-          build_dir: public
+          folder: public
           token: ${{ secrets.GITHUB_TOKEN }}
           clean: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
